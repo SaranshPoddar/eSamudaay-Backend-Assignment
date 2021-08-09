@@ -102,3 +102,14 @@ Total order cost = 15300 - 1000 = 14300
 API will respond with following JSON
 {'order_total':14300}
 
+# To check whether the project is running or not pass the json to running api. See below the pics of postman and you can also check the api by doing same
+
+![Postman_1](https://user-images.githubusercontent.com/63144578/128712032-595d54f7-f9d1-4ccf-9909-5defc314c9b9.PNG)
+
+Output:
+
+![Postman_2](https://user-images.githubusercontent.com/63144578/128712145-551ae025-3a82-465a-ad93-f3ff8921072d.PNG)
+
+PASS different-different parameters in json and check api accordingly.
+
+# Thank You for viewing this document. Hope it worked! Have Fun With Code!
