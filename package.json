@@ -1,0 +1,27 @@
+{
+  "name": "esamudaay_backend_assignment",
+  "version": "1.0.0",
+  "description": "This is the backend assignment by eSamudaay for creating an api to calculate total value of the order",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaranshPoddar/eSamudaay-Backend-Assignment.git"
+  },
+  "author": "Saransh Poddar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaranshPoddar/eSamudaay-Backend-Assignment/issues"
+  },
+  "homepage": "https://github.com/SaranshPoddar/eSamudaay-Backend-Assignment#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
