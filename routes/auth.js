@@ -5,8 +5,6 @@ const router = require("express").Router();
 router.post("/orderTotal", function (req, res,next) {
   //Variable declarations and initiallizaton (Fetching JSON object values and storeing in a variable)
   var distance=req.body.distance; // distance fetched is in meters
-  var offer_type=req.body.offer.offer_type;
-  var offer_val=req.body.offer.offer_val;
   var total = 0, delivery_fee=0;
   var orderItems = req.body.order_items; //variable to store the Order Items Array
 
@@ -39,18 +37,28 @@ router.post("/orderTotal", function (req, res,next) {
   }
   // Adding delivery fee to order total
   total += delivery_fee;
+
   
-  //Condition for offer applied 
-  if (offer_type == 'FLAT' || offer_type == 'flat' ){
-    if (offer_val <= total){
-     total -= offer_val;  // Subtracting offer value from order total
-    }
-  }else if (offer_type == 'DELIVERY' || offer_type == 'delivery'){
-    if (delivery_fee <= total){
-     total -= delivery_fee;  // Subtracting delivery fee from order total
+  //Condition for offer applied including if there is NO offer applied
+
+  if(req.body.hasOwnProperty('offer') == true) {
+    if (req.body.offer.hasOwnProperty('offer_type') == true) {
+      var offer_type=req.body.offer.offer_type;
+      if (offer_type == 'FLAT' || offer_type == 'flat' ) {
+        if(req.body.offer.hasOwnProperty('offer_val') == true) {
+          var offer_val=req.body.offer.offer_val;
+          if (offer_val <= total) {
+            total -= offer_val;  // Subtracting offer value from order total
+          }
+        }
+      } else if (offer_type == 'DELIVERY' || offer_type == 'delivery') {
+        if (delivery_fee <= total) {
+         total -= delivery_fee;  // Subtracting delivery fee from order total
+        }
+      }
     }
   }
-  
+   
   //sending a JSON response containing final order total
   try {
     res.json({ order_total : total });
